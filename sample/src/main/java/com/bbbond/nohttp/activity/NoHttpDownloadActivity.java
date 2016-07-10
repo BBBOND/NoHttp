@@ -1,10 +1,10 @@
 package com.bbbond.nohttp.activity;
 
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,23 +37,7 @@ public class NoHttpDownloadActivity extends AppCompatActivity {
 
         request = NoHttpDownloadRequest.getInstance();
 
-//        initData();
-
         initView();
-    }
-
-    private void initData() {
-        for (int i = 0; i < MyUrl.URL_NOHTTP_DOWNLOAD.length; i++) {
-            Download download = new Download();
-            int j = MyUrl.URL_NOHTTP_DOWNLOAD[i].lastIndexOf('/');
-            download.setFileName(MyUrl.URL_NOHTTP_DOWNLOAD[i].substring(j + 1, MyUrl.URL_NOHTTP_DOWNLOAD[i].length()));
-            download.setFileFolder(Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + Environment.DIRECTORY_DOWNLOADS);
-            download.setProgress(0);
-            download.setTotalSize(0);
-            download.setUrl(MyUrl.URL_NOHTTP_DOWNLOAD[i]);
-            downloadList.add(download);
-        }
-        Log.d(TAG, "initData: " + downloadList.toString());
     }
 
     private void initView() {

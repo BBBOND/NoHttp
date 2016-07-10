@@ -9,6 +9,12 @@ NoHttp:http://www.nohttp.net/
     4. <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     5. <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+## 使用方式
+Gradle添加如下
+```xml
+compile 'com.kim.nohttp:nohttp:0.0.1'
+```
+
 ## 请求
 ### String、Json、JsonArray、Image请求
 ```java
