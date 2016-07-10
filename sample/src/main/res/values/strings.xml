@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">NoHttpSample</string>
+    <string name="str_get">String GET</string>
+    <string name="str_post">String POST</string>
+    <string name="json_get">JSON GET</string>
+    <string name="json_post">JSON POST</string>
+    <string name="img_get">IMG GET</string>
+    <string name="img_post">IMG POST</string>
+    <string name="start_all">开始所有</string>
+    <string name="stop_all">结束所有</string>
+    <string name="p">%</string>
+</resources>
