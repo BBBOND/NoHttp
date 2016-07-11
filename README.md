@@ -12,10 +12,25 @@ NoHttp:http://www.nohttp.net/
 ## 使用方式
 Gradle添加如下
 ```xml
-compile 'com.kim.nohttp:nohttp:0.0.1'
+compile 'com.kim.nohttp:nohttp:0.0.3'
 ```
 
 ## 请求
+
+### 请求前
+```java
+    //自行创建继承于Application的类，并在AndroidManifest.xml中标识
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        NoHttp.initialize(this);
+    }
+    
+    <application
+            android:name=".App">
+    </application>
+```
+
 ### String、Json、JsonArray、Image请求
 ```java
     // 获取请求对象
