@@ -3,11 +3,11 @@
 NoHttp:http://www.nohttp.net/                                                                                                     
 
 ## 权限
-    1. <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    2. <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    3. <uses-permission android:name="android.permission.INTERNET" />
-    4. <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    5. <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
 ## 使用方式
 Gradle添加如下
