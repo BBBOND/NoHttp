@@ -8,6 +8,7 @@ import com.yolanda.nohttp.rest.CacheMode;
 import com.yolanda.nohttp.rest.Request;
 
 import java.net.HttpCookie;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,21 +31,21 @@ public class RequestParams {
     //请求方式
     private RequestMethod requestMethod = RequestMethod.GET;
     //网络请求参数
-    private Map<String, String> params;
+    private Map<String, String> params = null;
     //请求头
-    private List<HttpCookie> headers;
+    private List<HttpCookie> headers = null;
     //显示进度条
     private boolean showProgress = true;
     //进度条文字
-    private String progressTitle;
+    private String progressTitle = "加载中...";
     // json请求体
     private String requestBodyForJson = "";
     // 缓存模式
-    private CacheMode cacheMode;
+    private CacheMode cacheMode = CacheMode.ONLY_REQUEST_NETWORK;
     // 设置超时时间
     private int connectTimeout = 6000;
     // 发送端（客户端）希望接受的数据类型
-    private String accept;
+    private String accept = "";
     // Content-type
     private String contentType = "application/json";
     // 重定向操作 默认不重定向

@@ -43,8 +43,10 @@ public class NoHttpRequest {
         progress = LoadingProgress.getInstance();
         final Request request = NoHttp.createStringRequest(requestParams.getRequestUrl(), requestParams.getRequestMethod() == RequestParams.RequestMethod.GET ? RequestMethod.GET : RequestMethod.POST);
         request.add(requestParams.getParams());
-        for (HttpCookie cookie : requestParams.getHeaders()) {
-            request.addHeader(cookie);
+        if (requestParams.getHeaders() != null) {
+            for (HttpCookie cookie : requestParams.getHeaders()) {
+                request.addHeader(cookie);
+            }
         }
         request.setRedirectHandler(requestParams.getRedirectHandler());
         request.setAccept(requestParams.getAccept());
@@ -90,8 +92,10 @@ public class NoHttpRequest {
         progress = LoadingProgress.getInstance();
         Request request = NoHttp.createJsonObjectRequest(requestParams.getRequestUrl(), requestParams.getRequestMethod() == RequestParams.RequestMethod.GET ? RequestMethod.GET : RequestMethod.POST);
         request.add(requestParams.getParams());
-        for (HttpCookie cookie : requestParams.getHeaders()) {
-            request.addHeader(cookie);
+        if (requestParams.getHeaders() != null) {
+            for (HttpCookie cookie : requestParams.getHeaders()) {
+                request.addHeader(cookie);
+            }
         }
         request.setRedirectHandler(requestParams.getRedirectHandler());
         request.setAccept(requestParams.getAccept());
@@ -137,8 +141,10 @@ public class NoHttpRequest {
         progress = LoadingProgress.getInstance();
         Request request = NoHttp.createJsonArrayRequest(requestParams.getRequestUrl(), requestParams.getRequestMethod() == RequestParams.RequestMethod.GET ? RequestMethod.GET : RequestMethod.POST);
         request.add(requestParams.getParams());
-        for (HttpCookie cookie : requestParams.getHeaders()) {
-            request.addHeader(cookie);
+        if (requestParams.getHeaders() != null) {
+            for (HttpCookie cookie : requestParams.getHeaders()) {
+                request.addHeader(cookie);
+            }
         }
         request.setRedirectHandler(requestParams.getRedirectHandler());
         request.setAccept(requestParams.getAccept());
@@ -184,8 +190,10 @@ public class NoHttpRequest {
         progress = LoadingProgress.getInstance();
         final Request request = NoHttp.createImageRequest(requestImageParams.getRequestUrl(), requestImageParams.getRequestMethod() == RequestParams.RequestMethod.GET ? RequestMethod.GET : RequestMethod.POST, requestImageParams.getMaxWidth(), requestImageParams.getMaxHeight(), requestImageParams.getConfig(), requestImageParams.getScaleType());
         request.add(requestImageParams.getParams());
-        for (HttpCookie cookie : requestImageParams.getHeaders()) {
-            request.addHeader(cookie);
+        if (requestImageParams.getHeaders() != null) {
+            for (HttpCookie cookie : requestImageParams.getHeaders()) {
+                request.addHeader(cookie);
+            }
         }
         request.setRedirectHandler(requestImageParams.getRedirectHandler());
         request.setAccept(requestImageParams.getAccept());

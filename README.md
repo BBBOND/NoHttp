@@ -12,7 +12,7 @@ NoHttp:http://www.nohttp.net/
 ## 使用方式
 Gradle添加如下
 ```xml
-compile 'com.kim.nohttp:nohttp:0.0.5'
+compile 'com.kim.nohttp:nohttp:0.0.6'
 ```
 
 ## 请求
