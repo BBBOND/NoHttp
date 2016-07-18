@@ -25,18 +25,6 @@ public class RequestImageParams extends RequestParams {
         super(context, requestUrl);
     }
 
-    public RequestImageParams(Context context, String requestUrl, NoHttpResponse response, RequestMethod requestMethod, Map<String, String> params, HttpCookie header, boolean showProgress, String progressTitle) {
-        super(context, requestUrl, response, requestMethod, params, header, showProgress, progressTitle);
-    }
-
-    public RequestImageParams(Context context, String requestUrl, NoHttpResponse response, RequestMethod requestMethod, Map<String, String> params, HttpCookie header, boolean showProgress, String progressTitle, int maxWidth, int maxHeight, Bitmap.Config config, ImageView.ScaleType scaleType) {
-        super(context, requestUrl, response, requestMethod, params, header, showProgress, progressTitle);
-        this.maxWidth = maxWidth;
-        this.maxHeight = maxHeight;
-        this.config = config;
-        this.scaleType = scaleType;
-    }
-
     public int getMaxWidth() {
         return maxWidth;
     }

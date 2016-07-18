@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = '0.0.4'
+version = '0.0.5'
 
 android {
     compileSdkVersion 24
@@ -12,7 +12,7 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 24
-        versionCode 4
+        versionCode 5
         versionName version
     }
     buildTypes {
@@ -108,7 +108,7 @@ bintray {
         version {
             name = version
             desc = 'A simple package for the NoHttp framework'
-            vcsTag = '4.0.0'
+            vcsTag = '5.0.0'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }

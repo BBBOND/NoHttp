@@ -2,7 +2,13 @@ package com.kim.nohttp.utils;
 
 import android.content.Context;
 
+import com.yolanda.nohttp.Headers;
+import com.yolanda.nohttp.RedirectHandler;
+import com.yolanda.nohttp.rest.CacheMode;
+import com.yolanda.nohttp.rest.Request;
+
 import java.net.HttpCookie;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,45 +32,38 @@ public class RequestParams {
     //网络请求参数
     private Map<String, String> params;
     //请求头
-    private HttpCookie header;
+    private List<HttpCookie> headers;
     //显示进度条
     private boolean showProgress = true;
     //进度条文字
     private String progressTitle;
+    // json请求体
+    private String requestBodyForJson = "";
+    // 缓存模式
+    private CacheMode cacheMode;
+    // 设置超时时间
+    private int connectTimeout = 6000;
+    // 发送端（客户端）希望接受的数据类型
+    private String accept;
+    // Content-type
+    private String contentType = "application/json";
+    // 重定向操作 默认不重定向
+    private RedirectHandler redirectHandler = new RedirectHandler() {
+        @Override
+        public Request<?> onRedirect(Headers responseHeaders) {
+            return null;
+        }
+
+        @Override
+        public boolean isDisallowedRedirect(Headers responseHeaders) {
+            return true;
+        }
+    };
+
 
     public RequestParams(Context context, String requestUrl) {
-        this(context, requestUrl, null);
-    }
-
-    public RequestParams(Context context, String requestUrl, NoHttpResponse response) {
-        this(context, requestUrl, response, RequestMethod.GET);
-    }
-
-    public RequestParams(Context context, String requestUrl, NoHttpResponse response, RequestMethod requestMethod) {
-        this(context, requestUrl, response, requestMethod, null);
-    }
-
-    public RequestParams(Context context, String requestUrl, NoHttpResponse response, RequestMethod requestMethod, Map<String, String> params) {
-        this(context, requestUrl, response, requestMethod, params, null);
-    }
-
-    public RequestParams(Context context, String requestUrl, NoHttpResponse response, RequestMethod requestMethod, Map<String, String> params, HttpCookie header) {
-        this(context, requestUrl, response, requestMethod, params, header, true);
-    }
-
-    public RequestParams(Context context, String requestUrl, NoHttpResponse response, RequestMethod requestMethod, Map<String, String> params, HttpCookie header, boolean showProgress) {
-        this(context, requestUrl, response, requestMethod, params, header, showProgress, null);
-    }
-
-    public RequestParams(Context context, String requestUrl, NoHttpResponse response, RequestMethod requestMethod, Map<String, String> params, HttpCookie header, boolean showProgress, String progressTitle) {
         this.context = context;
         this.requestUrl = requestUrl;
-        this.response = response;
-        this.requestMethod = requestMethod;
-        this.params = params;
-        this.header = header;
-        this.showProgress = showProgress;
-        this.progressTitle = progressTitle;
     }
 
     public Context getContext() {
@@ -99,12 +98,12 @@ public class RequestParams {
         this.params = params;
     }
 
-    public HttpCookie getHeader() {
-        return header;
+    public List<HttpCookie> getHeaders() {
+        return headers;
     }
 
-    public void setHeader(HttpCookie header) {
-        this.header = header;
+    public void setHeaders(List<HttpCookie> headers) {
+        this.headers = headers;
     }
 
     public boolean isShowProgress() {
@@ -121,5 +120,53 @@ public class RequestParams {
 
     public void setProgressTitle(String progressTitle) {
         this.progressTitle = progressTitle;
+    }
+
+    public RedirectHandler getRedirectHandler() {
+        return redirectHandler;
+    }
+
+    public void setRedirectHandler(RedirectHandler redirectHandler) {
+        this.redirectHandler = redirectHandler;
+    }
+
+    public String getRequestBodyForJson() {
+        return requestBodyForJson;
+    }
+
+    public void setRequestBodyForJson(String requestBodyForJson) {
+        this.requestBodyForJson = requestBodyForJson;
+    }
+
+    public int getConnectTimeout() {
+        return connectTimeout;
+    }
+
+    public void setConnectTimeout(int connectTimeout) {
+        this.connectTimeout = connectTimeout;
+    }
+
+    public CacheMode getCacheMode() {
+        return cacheMode;
+    }
+
+    public void setCacheMode(CacheMode cacheMode) {
+        this.cacheMode = cacheMode;
+    }
+
+    public String getAccept() {
+        return accept;
+    }
+
+    public void setAccept(String accept) {
+        this.accept = accept;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 }

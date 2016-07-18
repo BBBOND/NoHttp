@@ -3,12 +3,18 @@ package com.kim.nohttp.net;
 import com.kim.nohttp.utils.LoadingProgress;
 import com.kim.nohttp.utils.RequestImageParams;
 import com.kim.nohttp.utils.RequestParams;
+import com.yolanda.nohttp.Headers;
 import com.yolanda.nohttp.NoHttp;
+import com.yolanda.nohttp.RedirectHandler;
 import com.yolanda.nohttp.RequestMethod;
+import com.yolanda.nohttp.rest.CacheMode;
 import com.yolanda.nohttp.rest.OnResponseListener;
 import com.yolanda.nohttp.rest.Request;
 import com.yolanda.nohttp.rest.RequestQueue;
 import com.yolanda.nohttp.rest.Response;
+
+import java.net.HttpCookie;
+import java.net.Proxy;
 
 /**
  * NoHttp普通请求类
@@ -37,7 +43,15 @@ public class NoHttpRequest {
         progress = LoadingProgress.getInstance();
         final Request request = NoHttp.createStringRequest(requestParams.getRequestUrl(), requestParams.getRequestMethod() == RequestParams.RequestMethod.GET ? RequestMethod.GET : RequestMethod.POST);
         request.add(requestParams.getParams());
-        request.setHeader(requestParams.getHeader());
+        for (HttpCookie cookie : requestParams.getHeaders()) {
+            request.addHeader(cookie);
+        }
+        request.setRedirectHandler(requestParams.getRedirectHandler());
+        request.setAccept(requestParams.getAccept());
+        request.setCacheMode(requestParams.getCacheMode());
+        request.setConnectTimeout(requestParams.getConnectTimeout());
+        request.setDefineRequestBodyForJson(requestParams.getRequestBodyForJson());
+        request.setContentType(requestParams.getContentType());
         request.setCancelSign(requestParams.getRequestUrl());
         queue.add(0, request, new OnResponseListener() {
             @Override
@@ -76,7 +90,15 @@ public class NoHttpRequest {
         progress = LoadingProgress.getInstance();
         Request request = NoHttp.createJsonObjectRequest(requestParams.getRequestUrl(), requestParams.getRequestMethod() == RequestParams.RequestMethod.GET ? RequestMethod.GET : RequestMethod.POST);
         request.add(requestParams.getParams());
-        request.setHeader(requestParams.getHeader());
+        for (HttpCookie cookie : requestParams.getHeaders()) {
+            request.addHeader(cookie);
+        }
+        request.setRedirectHandler(requestParams.getRedirectHandler());
+        request.setAccept(requestParams.getAccept());
+        request.setCacheMode(requestParams.getCacheMode());
+        request.setConnectTimeout(requestParams.getConnectTimeout());
+        request.setDefineRequestBodyForJson(requestParams.getRequestBodyForJson());
+        request.setContentType(requestParams.getContentType());
         request.setCancelSign(requestParams.getRequestUrl());
         queue.add(1, request, new OnResponseListener() {
             @Override
@@ -115,7 +137,15 @@ public class NoHttpRequest {
         progress = LoadingProgress.getInstance();
         Request request = NoHttp.createJsonArrayRequest(requestParams.getRequestUrl(), requestParams.getRequestMethod() == RequestParams.RequestMethod.GET ? RequestMethod.GET : RequestMethod.POST);
         request.add(requestParams.getParams());
-        request.addHeader(requestParams.getHeader());
+        for (HttpCookie cookie : requestParams.getHeaders()) {
+            request.addHeader(cookie);
+        }
+        request.setRedirectHandler(requestParams.getRedirectHandler());
+        request.setAccept(requestParams.getAccept());
+        request.setCacheMode(requestParams.getCacheMode());
+        request.setConnectTimeout(requestParams.getConnectTimeout());
+        request.setDefineRequestBodyForJson(requestParams.getRequestBodyForJson());
+        request.setContentType(requestParams.getContentType());
         request.setCancelSign(requestParams.getRequestUrl());
         queue.add(2, request, new OnResponseListener() {
             @Override
@@ -154,7 +184,15 @@ public class NoHttpRequest {
         progress = LoadingProgress.getInstance();
         final Request request = NoHttp.createImageRequest(requestImageParams.getRequestUrl(), requestImageParams.getRequestMethod() == RequestParams.RequestMethod.GET ? RequestMethod.GET : RequestMethod.POST, requestImageParams.getMaxWidth(), requestImageParams.getMaxHeight(), requestImageParams.getConfig(), requestImageParams.getScaleType());
         request.add(requestImageParams.getParams());
-        request.addHeader(requestImageParams.getHeader());
+        for (HttpCookie cookie : requestImageParams.getHeaders()) {
+            request.addHeader(cookie);
+        }
+        request.setRedirectHandler(requestImageParams.getRedirectHandler());
+        request.setAccept(requestImageParams.getAccept());
+        request.setCacheMode(requestImageParams.getCacheMode());
+        request.setConnectTimeout(requestImageParams.getConnectTimeout());
+        request.setDefineRequestBodyForJson(requestImageParams.getRequestBodyForJson());
+        request.setContentType(requestImageParams.getContentType());
         request.setCancelSign(requestImageParams.getRequestUrl());
         queue.add(3, request, new OnResponseListener() {
             @Override

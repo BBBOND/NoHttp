@@ -9,6 +9,8 @@ import com.yolanda.nohttp.download.DownloadListener;
 import com.yolanda.nohttp.download.DownloadQueue;
 import com.yolanda.nohttp.download.DownloadRequest;
 
+import java.net.HttpCookie;
+
 /**
  * NoHttp下载类
  */
@@ -33,7 +35,14 @@ public class NoHttpDownloadRequest {
     public void requestDownload(final RequestDownloadParams requestDownloadParams) {
         DownloadRequest downloadRequest = NoHttp.createDownloadRequest(requestDownloadParams.getRequestUrl(), requestDownloadParams.getRequestMethod() == RequestParams.RequestMethod.GET ? RequestMethod.GET : RequestMethod.POST, requestDownloadParams.getFileFolder(), requestDownloadParams.getFilename(), requestDownloadParams.isRange(), requestDownloadParams.isDeleteOld());
         downloadRequest.add(requestDownloadParams.getParams());
-        downloadRequest.addHeader(requestDownloadParams.getHeader());
+        for (HttpCookie cookie : requestDownloadParams.getHeaders()) {
+            downloadRequest.addHeader(cookie);
+        }
+        downloadRequest.setRedirectHandler(requestDownloadParams.getRedirectHandler());
+        downloadRequest.setAccept(requestDownloadParams.getAccept());
+        downloadRequest.setConnectTimeout(requestDownloadParams.getConnectTimeout());
+        downloadRequest.setDefineRequestBodyForJson(requestDownloadParams.getRequestBodyForJson());
+        downloadRequest.setContentType(requestDownloadParams.getContentType());
         downloadRequest.setCancelSign(requestDownloadParams.getRequestUrl());
         queue.add(0, downloadRequest, new DownloadListener() {
             @Override
